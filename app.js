@@ -81,9 +81,9 @@ const dropdownToggle=document.querySelector('.submenu-toggle');
 const submenu=document.querySelector('.nav-submenu');
 function setDropdown(open){dropdown.classList.toggle('is-open',open);dropdownToggle.setAttribute('aria-expanded',String(open));submenu.inert=!open;}
 setDropdown(false);
-dropdownToggle.addEventListener('click',e=>{const pointerOnDesktop=e.detail>0&&matchMedia('(min-width: 1151px)').matches;setDropdown(pointerOnDesktop||dropdownToggle.getAttribute('aria-expanded')!=='true');});
-dropdown.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&matchMedia('(min-width: 1151px)').matches)setDropdown(true);});
-dropdown.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&matchMedia('(min-width: 1151px)').matches&&!dropdown.contains(document.activeElement))setDropdown(false);});
+dropdownToggle.addEventListener('click',e=>{const pointerOnDesktop=e.detail>0&&matchMedia('(min-width: 1251px)').matches;setDropdown(pointerOnDesktop||dropdownToggle.getAttribute('aria-expanded')!=='true');});
+dropdown.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&matchMedia('(min-width: 1251px)').matches)setDropdown(true);});
+dropdown.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&matchMedia('(min-width: 1251px)').matches&&!dropdown.contains(document.activeElement))setDropdown(false);});
 dropdown.addEventListener('focusout',e=>{if(!dropdown.contains(e.relatedTarget))setDropdown(false);});
 document.addEventListener('click',e=>{if(!dropdown.contains(e.target))setDropdown(false);});
 dropdown.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();dropdownToggle.focus();setDropdown(false);}});
@@ -92,3 +92,4 @@ function markSection(){document.querySelectorAll('[data-section]').forEach(a=>{i
 markSection();addEventListener('hashchange',markSection);
 if(location.hash){const anchor=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(anchor)requestAnimationFrame(()=>anchor.scrollIntoView());}
 menu.addEventListener('click',()=>{if(menu.getAttribute('aria-expanded')==='false')setDropdown(false);});
+
