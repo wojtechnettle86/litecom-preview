@@ -4,17 +4,27 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Litecom — Ať vaše firma funguje.</title>
   <meta name="description" content="Pomáháme majitelům firem lépe řídit firmu, vést lidi a napravit to, co nefunguje. Poznejte Litecom a náš přístup.">
-  <meta name="theme-color" content="#063b6d"><link rel="icon" href="symbol.svg?v=7" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=7"><link rel="stylesheet" href="hero.css?v=7"><script src="app.js?v=7" defer></script>
+  <meta name="theme-color" content="#063b6d"><link rel="icon" href="symbol.svg?v=8" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=8"><link rel="stylesheet" href="hero.css?v=8"><link rel="stylesheet" href="navigation.css?v=8"><script src="app.js?v=8" defer></script>
 </head>
 <body>
   <a class="skip" href="#obsah">Přeskočit na obsah</a>
-  <header class="header"><a class="brand" href="?stranka=uvod" aria-label="Litecom — úvod"><img src="logo.svg?v=7" alt="Litecom" width="172" height="41"></a>
+  <header class="header"><a class="brand" href="?stranka=uvod" aria-label="Litecom — úvod"><img src="logo.svg?v=8" alt="Litecom" width="172" height="41"></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span>☰</span></button>
-    <nav id="navigation" aria-label="Hlavní navigace"><a data-page="reference" href="?stranka=reference">Reference</a><a data-page="jak-pracujeme" href="?stranka=jak-pracujeme">Jak pracujeme</a><a data-page="o-litecomu" href="?stranka=o-litecomu">O Litecomu</a><a data-page="tréninky" href="?stranka=tréninky">Workshopy a tréninky</a><a class="nav-contact" data-page="kontakt" href="?stranka=kontakt">Kontakt <span>↗</span></a></nav>
+    <nav id="navigation" aria-label="Hlavní navigace">
+      <a data-page="reference" href="?stranka=reference">Reference</a>
+      <a data-page="jak-pracujeme" href="?stranka=jak-pracujeme">Jak pracujeme</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-heading"><a data-page="o-litecomu" href="?stranka=o-litecomu">O Litecomu</a><button class="submenu-toggle" type="button" aria-label="Rozbalit sekce O Litecomu" aria-expanded="false" aria-controls="about-submenu"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div>
+        <div id="about-submenu" class="nav-submenu"><a data-section="pepa-oralek" href="?stranka=o-litecomu#pepa-oralek">Pepa Orálek zakladatel</a><a data-section="lide" href="?stranka=o-litecomu#lide">Lidé</a><a data-page="kariera" href="?stranka=kariera">Kariéra</a></div>
+      </div>
+      <a data-page="tréninky" href="?stranka=tréninky">Workshopy a tréninky</a>
+      <a class="nav-contact" data-page="kontakt" href="?stranka=kontakt">Kontakt <span aria-hidden="true">↗</span></a>
+    </nav>
+    <a class="header-phone" href="tel:+420602578947" aria-label="Zavolat Litecomu na +420 602 578 947"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 3h4l2 5-3 2a15 15 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2C9 21 3 15 3 5a2 2 0 0 1 2-2Z"/></svg><span>602 578 947</span></a>
   </header>
   <main id="obsah" tabindex="-1"></main>
-  <footer><div class="footer-top"><a href="?stranka=uvod" class="footer-logo"><img src="logo.svg?v=7" alt="Litecom" width="172" height="41"></a><p>Pro vaše úspěšné podnikání.</p><a href="?stranka=kontakt">Probrat situaci ve firmě ↗</a></div><div class="footer-bottom"><span>© 2026 Litecom · Návrhová verze</span><a href="?stranka=soukromi">Informace o tomto prototypu</a><span>Řízení firmy. Vedení lidí. Praxe.</span></div></footer>
+  <footer><div class="footer-top"><a href="?stranka=uvod" class="footer-logo"><img src="logo.svg?v=8" alt="Litecom" width="172" height="41"></a><p>Pro vaše úspěšné podnikání.</p><a href="?stranka=kontakt">Probrat situaci ve firmě ↗</a></div><div class="footer-bottom"><span>© 2026 Litecom · Návrhová verze</span><a href="?stranka=soukromi">Informace o tomto prototypu</a><span>Řízení firmy. Vedení lidí. Praxe.</span></div></footer>
   <dialog id="video-dialog" aria-labelledby="video-title"><div class="dialog-head"><h2 id="video-title"></h2><button class="close-dialog" aria-label="Zavřít video">✕</button></div><video controls playsinline preload="none"></video><p class="video-note">Původní video Litecomu. České titulky připravujeme.</p></dialog>
 </body>
 </html>
