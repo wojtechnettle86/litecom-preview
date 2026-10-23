@@ -87,3 +87,9 @@
 
 /* Sequential lift transition: only one story is visible at a time. */
 .client-slide-stage{overflow:hidden}.client-slide-stage .ref-havranova[data-variant="4"],.client-slide-stage .ref-havranova.is-current{transition:none}
+
+/* Give the opening statement its own breathing room. */
+.homepage-stories .hero-bridge{padding-top:clamp(110px,11vw,170px);padding-bottom:clamp(110px,11vw,170px)}
+.homepage-stories #pribehy .section-heading{display:block;text-align:center;margin-bottom:48px}
+.homepage-stories #pribehy .section-heading h2{margin-left:auto;margin-right:auto}
+@media(max-width:800px){.homepage-stories .hero-bridge{padding-top:85px;padding-bottom:85px}.homepage-stories #pribehy .section-heading{margin-bottom:35px}}
