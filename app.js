@@ -117,11 +117,9 @@ if(page==='uvod'&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&'Inte
 
 const clientCarousel=document.querySelector('.client-carousel');
 if(clientCarousel){
- const slides=[...clientCarousel.querySelectorAll('.client-slide')],tabs=[...clientCarousel.querySelectorAll('[data-client-slide]')],pauseButton=document.querySelector('[data-client-pause]');
+ const slides=[...clientCarousel.querySelectorAll('.client-slide')],tabs=[...clientCarousel.querySelectorAll('[data-client-slide]')];
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
- let savedPause=false;try{savedPause=localStorage.getItem('litecom-reference-paused')==='true';}catch{}
- pauseButton.hidden=false;
- let active=0,paused=reduced.matches||savedPause,inView=false,hovering=false,focused=false,timer=null,busy=false,pending=null;
+ let active=0,paused=reduced.matches,inView=false,hovering=false,focused=false,timer=null,busy=false,pending=null;
  function schedule(){clearTimeout(timer);if(!busy&&!paused&&inView&&!hovering&&!focused&&!document.hidden)timer=setTimeout(()=>select((active+1)%slides.length),5000);}
  function show(index,announce){
   active=index;
@@ -145,15 +143,13 @@ if(clientCarousel){
   if(pending){const request=pending;pending=null;select(request.index,request.announce);}else schedule();
  }
  tabs.forEach((tab,i)=>tab.addEventListener('click',()=>select(i,true)));
- function updatePause(){pauseButton.textContent=paused?'Zapnout automatické střídání referencí':'Vypnout automatické střídání referencí';pauseButton.setAttribute('aria-pressed',String(paused));schedule();}
- pauseButton.onclick=()=>{paused=!paused;try{localStorage.setItem('litecom-reference-paused',String(paused));}catch{}updatePause();};
  clientCarousel.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hovering=true;schedule();}});
  clientCarousel.addEventListener('pointerleave',()=>{hovering=false;schedule();});
  clientCarousel.addEventListener('focusin',()=>{focused=true;schedule();});
  clientCarousel.addEventListener('focusout',e=>{if(!clientCarousel.contains(e.relatedTarget)){focused=false;schedule();}});
  document.addEventListener('visibilitychange',schedule);
  if('IntersectionObserver'in window)new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;schedule();},{threshold:.15}).observe(clientCarousel);else inView=true;
- show(0,false);updatePause();
+ show(0,false);schedule();
 }
 
 // Temporary homepage joke. Remove this block and .pepa-surprise styles to retire it.
@@ -164,7 +160,13 @@ if(page==='uvod'){
  document.body.append(surprise);
  surprise.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>surprise.close()));
  surprise.addEventListener('click',event=>{if(event.target===surprise){const box=surprise.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)surprise.close();}});
- setTimeout(()=>surprise.showModal(),900);
+ const popupToggle=document.querySelector('[data-popup-toggle]');
+ let popupDisabled=false;try{popupDisabled=localStorage.getItem('litecom-popup-disabled')==='true';}catch{}
+ popupToggle.hidden=false;
+ function updatePopupToggle(){popupToggle.textContent=popupDisabled?'Zapnout popup':'Vypnout popup';popupToggle.setAttribute('aria-pressed',String(popupDisabled));}
+ popupToggle.onclick=()=>{popupDisabled=!popupDisabled;try{localStorage.setItem('litecom-popup-disabled',String(popupDisabled));}catch{}updatePopupToggle();if(popupDisabled)surprise.close();else surprise.showModal();};
+ updatePopupToggle();
+ setTimeout(()=>{if(!popupDisabled)surprise.showModal();},900);
 }
 
 // Keep Czech one-letter words attached to the following word, including dynamic content.
