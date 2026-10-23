@@ -152,3 +152,14 @@ if(clientCarousel){
  if('IntersectionObserver'in window)new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;schedule();},{threshold:.15}).observe(clientCarousel);else inView=true;
  show(0,false);updatePause();
 }
+
+// Temporary homepage joke. Remove this block and .pepa-surprise styles to retire it.
+if(page==='uvod'){
+ const surprise=document.createElement('dialog');
+ surprise.className='pepa-surprise';surprise.setAttribute('aria-labelledby','pepa-surprise-title');
+ surprise.innerHTML=`<button class="pepa-surprise-close" aria-label="Zavřít">×</button><div class="pepa-surprise-layout"><img src="pepa-prekvapeni.webp" alt="Pepa Orálek s překvapeným výrazem"><div class="pepa-surprise-copy"><h2 id="pepa-surprise-title">Počkej… ty už máš firmu, která funguje i bez tebe?</h2><p>Tak to se na tebe musím podívat osobně.</p><button class="button navy" data-surprise-close>Jasně, Pepo. Jen se tu rozhlížím.</button></div></div>`;
+ document.body.append(surprise);
+ surprise.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>surprise.close()));
+ surprise.addEventListener('click',event=>{if(event.target===surprise){const box=surprise.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)surprise.close();}});
+ setTimeout(()=>surprise.showModal(),900);
+}
